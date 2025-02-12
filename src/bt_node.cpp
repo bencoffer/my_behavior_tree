@@ -32,9 +32,9 @@ int main(int argc, char** argv) {
 
   auto tree = factory.createTreeFromText(R"(
     <root main_tree_to_execute="MainTree">
-	  <BehaviorTree ID="MainTree">
+      <BehaviorTree ID="MainTree">
         <SayHello/>
-	  </BehaviorTree>
+      </BehaviorTree>
     </root>
   )");
 
