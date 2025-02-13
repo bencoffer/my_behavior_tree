@@ -1,4 +1,4 @@
-#include <behaviortree_cpp_v3/bt_factory.h>
+#include <behaviortree_cpp/bt_factory.h>
 #include <rclcpp/rclcpp.hpp>
 
 
@@ -6,7 +6,7 @@ class SayHello : public BT::SyncActionNode {
 
 public:
 
-  SayHello(const std::string& name, const BT::NodeConfiguration& config)
+  SayHello(const std::string& name, const BT::NodeConfig& config)
     : BT::SyncActionNode(name, config) {}
 
   static BT::PortsList providedPorts() {
@@ -39,7 +39,7 @@ int main(int argc, char** argv) {
   )");
 
   while (rclcpp::ok()) {
-    tree.tickRoot();
+    BT::NodeStatus status = tree.tickExactlyOnce();
     rclcpp::spin_some(node);
     std::this_thread::sleep_for(std::chrono::milliseconds(100));
   }
